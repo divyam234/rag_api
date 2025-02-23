@@ -42,6 +42,7 @@ The following environment variables are required to run the application:
     - Note: `OPENAI_API_KEY` will work but `RAG_OPENAI_API_KEY` will override it in order to not conflict with LibreChat setting.
 - `RAG_OPENAI_BASEURL`: (Optional) The base URL for your OpenAI API Embeddings
 - `RAG_OPENAI_PROXY`: (Optional) Proxy for OpenAI API Embeddings
+- `RAG_JINAAI_API_KEY`: The API key for JinaAI API Embeddings
 - `VECTOR_DB_TYPE`: (Optional) select vector database type, default to `pgvector`.
 - `POSTGRES_DB`: (Optional) The name of the PostgreSQL database, used when `VECTOR_DB_TYPE=pgvector`.
 - `POSTGRES_USER`: (Optional) The username for connecting to the PostgreSQL database.
@@ -61,7 +62,7 @@ The following environment variables are required to run the application:
 - `PDF_EXTRACT_IMAGES`: (Optional) A boolean value indicating whether to extract images from PDF files. Default value is "False".
 - `DEBUG_RAG_API`: (Optional) Set to "True" to show more verbose logging output in the server console, and to enable postgresql database routes
 - `CONSOLE_JSON`: (Optional) Set to "True" to log as json for Cloud Logging aggregations
-- `EMBEDDINGS_PROVIDER`: (Optional) either "openai", "bedrock", "azure", "huggingface", "huggingfacetei" or "ollama", where "huggingface" uses sentence_transformers; defaults to "openai"
+- `EMBEDDINGS_PROVIDER`: (Optional) either "openai", "jinaai", bedrock", "azure", "huggingface", "huggingfacetei" or "ollama", where "huggingface" uses sentence_transformers; defaults to "openai"
 - `EMBEDDINGS_MODEL`: (Optional) Set a valid embeddings model to use from the configured provider.
     - **Defaults**
     - openai: "text-embedding-3-small"
