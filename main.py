@@ -192,14 +192,13 @@ async def delete_documents(document_ids: List[str] = Body(...)):
     try:
         if isinstance(vector_store, AsyncPgVector):
             existing_ids = await vector_store.get_all_ids()
-            await vector_store.delete(ids=document_ids)
+            if all(id in existing_ids for id in document_ids):
+                await vector_store.delete(ids=document_ids)
         else:
             existing_ids = vector_store.get_all_ids()
-            vector_store.delete(ids=document_ids)
-
-        if not all(id in existing_ids for id in document_ids):
-            raise HTTPException(status_code=404, detail="One or more IDs not found")
-
+            if all(id in existing_ids for id in document_ids):
+                vector_store.delete(ids=document_ids)
+                
         file_count = len(document_ids)
         return {
             "message": f"Documents for {file_count} file{'s' if file_count > 1 else ''} deleted successfully"
