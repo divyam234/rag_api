@@ -9,7 +9,9 @@
           "args": [
               "main:app",
               "--port",
-              "8000",
+              "8888",
+              "--host",
+              "0.0.0.0",
               "--reload"
           ],
           "jinja": true,
